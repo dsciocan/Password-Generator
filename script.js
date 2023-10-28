@@ -88,10 +88,32 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+var lowercase;
+var uppercase;
+var numeric;
+var special;
+var inputLength;
+function characterValidation() {
+  lowercase = confirm("Would you like your password to contain lowercase characters?");
+  uppercase = confirm("Would you like your password to contain upercase characters?");
+  numeric = confirm("Would you like your password to contain numeric characters?");
+  special = confirm("Would you like your password to contain special characters?");
+  if (lowercase == false && uppercase == false && numeric == false && special == false) {
+    alert("Password should contain at least one character type. Please try again!");
+    characterValidation();
+  } 
+}
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+inputLength = Number(prompt("Please choose the length of your password, between 8 and 128 characters."));
+while (inputLength < 8 || inputLength > 128 || isNaN(inputLength)) {
+  alert("Invalid password size, please try again.");
+  getPasswordOptions();
 }
+characterValidation();
+return;
+}
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -116,3 +138,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+getPasswordOptions();
