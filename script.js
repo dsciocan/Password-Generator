@@ -123,7 +123,7 @@ function getRandom(arr) {
 // Function to generate password with user input
 function generatePassword() {
   var passwordContent = "";
-  while (passwordContent.length !== inputLength) {
+  while (passwordContent.length !== inputLength && passwordContent.length < inputLength) {
     if (uppercase == true) {
         passwordContent += getRandom(upperCasedCharacters);
     }
